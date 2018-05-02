@@ -63,7 +63,7 @@ let redis;
 if (addresses.length > 1) {
     redis = new Redis.Cluster(addresses);
 } else if (addresses.length === 1) {
-    redis = new Redis(addresses[0]);
+    redis = new Redis(process.env.REDIS_URL || addresses[0]);
 } else {
     throw 'REDIS required.';
 }
